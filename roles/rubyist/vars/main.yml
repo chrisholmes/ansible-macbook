@@ -1,0 +1,11 @@
+---
+# file: roles/rubyist/vars/main.yml
+rubies:
+  - type: ruby
+    version: 2.1.0
+
+  - type: ruby
+    version: 2.0.0-p353
+
+  - type: ruby
+    version: 1.9.3-p484

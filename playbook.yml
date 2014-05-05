@@ -1,0 +1,18 @@
+---
+#file: playbook
+- hosts: all
+  roles:
+    - macbook
+    - rubyist
+    - develops
+
+  vars:
+    - project_home: project
+    - projects:
+      - name: kanban
+
+  tasks: 
+    - name: prebundle gems
+      register: ruby_version
+      shell: "source /usr/local/opt/chruby/share/chruby/chruby.sh; source /usr/local/opt/chruby/share/chruby/auto.sh; cd {{ home }}/{{ project_home }}/{{ item.name }}; echo $PWD; bundle install"
+      with_items: projects

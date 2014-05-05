@@ -1,0 +1,24 @@
+---
+# file: roles/rubyist/tasks/main.yml
+- name: load chruby
+  lineinfile: 
+    dest={{ home }}/.zshenv
+    line="source /usr/local/opt/chruby/share/chruby/chruby.sh"
+    regexp="source.*chruby\.sh"
+
+- name: auto load chruby
+  lineinfile: 
+    dest={{ home }}/.zshenv
+    line="source /usr/local/opt/chruby/share/chruby/auto.sh"
+    regexp="source.*chruby\/auto\.sh"
+
+- name: check installed rubies
+  shell: "source /usr/local/opt/chruby/share/chruby/chruby.sh; chruby | grep '{{ item.type }}-{{ item.version }}' | sed -e 's/*//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'"
+  register: installed_rubies
+  with_items: rubies
+  ignore_errors: true
+
+- name: install missing rubies
+  shell: RUBY_CONFIGURE_OPTS=--with-opt-dir="`brew --prefix openssl`:`brew --prefix readline`:`brew --prefix libyaml`:`brew --prefix gdbm`:`brew --prefix libffi`" ruby-install {{ item.type }} {{ item.version }}
+  with_items: rubies
+  when: "'{{item.type}}-{{ item.version }}' not in installed_rubies.results|map(attribute='stdout')"

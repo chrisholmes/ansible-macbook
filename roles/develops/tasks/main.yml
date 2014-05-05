@@ -1,0 +1,8 @@
+- name: add dotfiles
+  git: 
+    repo=https://github.com/chrisholmes/dotfiles.git
+    dest={{ home }}
+    force=no
+    update=no
+
+

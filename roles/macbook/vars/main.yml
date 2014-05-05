@@ -1,0 +1,35 @@
+---
+# file: roles/common/vars/main.yml
+taps: 
+  - phinze/cask
+  - homebrew/binary
+
+homebrews:
+  - wget
+  - apple-gcc42
+  - vim
+  - ack
+  - git
+  - chruby
+  - ruby-install
+  - tmux
+  - openssl
+  - readline
+  - libyaml
+  - gdbm
+  - brew-cask
+  - docker
+  - boot2docker
+  - elixir
+  - erlang
+  - rebar
+
+applications:
+  - google-chrome
+  - iterm2
+  - firefox
+  - transmit
+  - vagrant
+  - vlc
+  - git-annex
+  - slate
