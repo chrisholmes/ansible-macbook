@@ -23,6 +23,7 @@ homebrews:
   - erlang
   - elixir
   - rebar
+  - reattach-to-user-namespace
 
 applications:
   - google-chrome
