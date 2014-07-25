@@ -34,3 +34,4 @@ applications:
   - vlc
   - git-annex
   - slate
+  - intellij-idea-ce
