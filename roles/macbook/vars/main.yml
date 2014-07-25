@@ -20,8 +20,8 @@ homebrews:
   - brew-cask
   - docker
   - boot2docker
-  - elixir
   - erlang
+  - elixir
   - rebar
 
 applications:
