@@ -3,5 +3,5 @@
 - hosts: all
   roles:
     - macbook
-    - rubyist
     - develops
+    - rubyist
