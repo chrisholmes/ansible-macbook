@@ -1,5 +1,10 @@
 ---
 # file: roles/rubyist/vars/main.yml
+
+homebrews:
+  - chruby
+  - ruby-install
+
 rubies:
   - type: ruby
     version: 2.1.0

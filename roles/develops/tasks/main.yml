@@ -1,8 +1,11 @@
 - name: add dotfiles
   git: 
     repo=https://github.com/chrisholmes/dotfiles.git
-    dest={{ home }}
+    dest={{ home }}/.dotfiles
     force=no
-    update=no
+    update=yes
+    recursive=yes
 
+- name: rcm
+  shell: rcup
 

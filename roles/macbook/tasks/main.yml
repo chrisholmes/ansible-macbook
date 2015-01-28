@@ -1,40 +1,14 @@
 ---
 # file: roles/common/tasks/main.yml
-- name: check taps
-  shell: "brew tap | grep '{{ item }}'"
+- name: install taps
+  homebrew_tap:  tap={{ item }} state=present
   with_items: taps
-  register: installed_taps
-  ignore_errors: true
-  tags: taps
 
-- name: install missing taps
-  shell: brew tap {{ item }}
-  with_items: taps
-  when: item not in installed_taps.results|map(attribute='stdout')
-  tags: taps
-
-- name: install libraries via homebrew
-  homebrew: name={{ item }} state=present
+- name: install applications via homebrew
+  homebrew: name={{ item }} state=latest update_homebrew=yes 
   with_items: homebrews
-
-- name: check installed casks
-  shell: "brew cask list | grep {{ item }}"
-  register: installed_applications
-  with_items: applications
-  ignore_errors: true
 
 - name: install missing casks
-  shell: brew cask install {{ item }} --appdir=/Applications
+  homebrew_cask: name={{ item }} state=present
   with_items: applications
-  when: item not in installed_applications.results|map(attribute='stdout')
 
-- name: outdated apps
-  shell: "brew outdated | grep {{ item }} | cut -f1" 
-  register: outdated_homebrews
-  with_items: homebrews
-  ignore_errors: true
-
-- name: upgrade outdated
-  shell: brew upgrade {{ item }}
-  with_items: homebrews
-  when: item in outdated_homebrews.results|map(attribute='stdout')

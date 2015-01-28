@@ -1,5 +1,10 @@
 ---
 # file: roles/rubyist/tasks/main.yml
+
+- name: install applications via homebrew
+  homebrew: name={{ item }} state=latest update_homebrew=yes
+  with_items: homebrews
+
 - name: load chruby
   lineinfile: 
     dest={{ home }}/.zshenv

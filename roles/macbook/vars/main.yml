@@ -1,29 +1,26 @@
 ---
 # file: roles/common/vars/main.yml
 taps: 
-  - phinze/cask
-  - homebrew/binary
+  - thoughtbot/formulae
+  - caskroom/cask
+
 
 homebrews:
   - wget
-  - apple-gcc42
   - vim
   - ack
   - git
-  - chruby
-  - ruby-install
   - tmux
   - openssl
   - readline
   - libyaml
   - gdbm
   - brew-cask
-  - docker
-  - boot2docker
   - erlang
   - elixir
   - rebar
   - reattach-to-user-namespace
+  - rcm
 
 applications:
   - google-chrome
