@@ -2,8 +2,7 @@
 # file: roles/common/vars/main.yml
 taps: 
   - thoughtbot/formulae
-  - caskroom/cask
-
+  - homebrew/cask
 
 homebrews:
   - wget
@@ -15,7 +14,6 @@ homebrews:
   - readline
   - libyaml
   - gdbm
-  - brew-cask
   - erlang
   - elixir
   - rebar
@@ -23,12 +21,10 @@ homebrews:
   - rcm
 
 applications:
-  - google-chrome
   - iterm2
   - firefox
-  - transmit
   - vagrant
-  - vlc
-  - git-annex
-  - slate
+  - slack
   - intellij-idea-ce
+  - telegram
+  - omnigraffle

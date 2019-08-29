@@ -1,14 +1,17 @@
 ---
 # file: roles/common/tasks/main.yml
-- name: install taps
-  homebrew_tap:  tap={{ item }} state=present
-  with_items: taps
+- homebrew_tap:  
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ taps }}"
 
-- name: install applications via homebrew
-  homebrew: name={{ item }} state=latest update_homebrew=yes 
-  with_items: homebrews
+- homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ homebrews }}"
 
-- name: install missing casks
-  homebrew_cask: name={{ item }} state=present
-  with_items: applications
+- homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ applications }}"
 
